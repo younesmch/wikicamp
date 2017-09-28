@@ -47,8 +47,14 @@ source 'https://rubygems.org'
 
  gem 'figaro', '1.0'
 
+ gem "pundit"
+
+ gem "rolify"
+
  group :development do
    gem 'listen', '~> 3.0.5'
+   gem "better_errors"
+   gem "binding_of_caller"
  end
 
  group :test do
@@ -56,6 +62,7 @@ source 'https://rubygems.org'
    gem 'faker'
    gem 'factory_girl_rails'
    gem 'simplecov'
+   gem 'pundit-matchers', '~> 1.3.1'
  end
 
  group :development, :test do
