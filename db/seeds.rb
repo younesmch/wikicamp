@@ -22,6 +22,7 @@ wikis = Wiki.all
 
 freemember = User.create!(email: 'member@example.com', password: 'helloworld')
 
+
 premium = User.create!(email: 'premium@example.com', password: 'helloworld')
 premium.remove_role :free
 premium.add_role :premium

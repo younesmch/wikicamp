@@ -51,6 +51,8 @@ source 'https://rubygems.org'
 
  gem "rolify"
 
+ gem "stripe"
+
  group :development do
    gem 'listen', '~> 3.0.5'
    gem "better_errors"
@@ -58,11 +60,13 @@ source 'https://rubygems.org'
  end
 
  group :test do
+
    gem 'shoulda'
    gem 'faker'
    gem 'factory_girl_rails'
    gem 'simplecov'
    gem 'pundit-matchers', '~> 1.3.1'
+   gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
  end
 
  group :development, :test do

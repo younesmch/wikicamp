@@ -1,2 +1,7 @@
 SENDGRID_PASSWORD:
 SENDGRID_USERNAME:
+
+#stripe info which will be included within application.yml
+
+STRIPE_PUBLISHABLE_KEY:
+STRIPE_SECRET_KEY:
