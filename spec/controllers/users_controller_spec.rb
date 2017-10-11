@@ -3,24 +3,17 @@ require 'rolify'
 
 RSpec.describe UsersController, type: :controller do
 
-  let(:new_user_attributes) do
-    {
-      email: "wikicamp@wikicamp.com",
-      password: "helloworld",
-      password_confirmation: "blochead"
-    }
+  before(:each) do
+    @user = FactoryGirl.create(:user)
+    @user.add_role :premium
+    sign_in @user
   end
 
   describe "POST downgrade" do
-    let(:factory_user) { create(:user)}
-
-    before do
-      @user.add_role :premium
-    end
 
     it "removes premium role from user" do
       post :downgrade
-      expect (@user.roles.include :premium).to be_false
+      expect(@user.has_role? :premium).to be_falsey
     end
 
     it "redirects the user to root path" do
