@@ -20,13 +20,13 @@ end
 
 wikis = Wiki.all
 
-freemember = User.create!(email: 'member@example.com', password: 'helloworld')
+freemember = User.create!(email: 'member@example.com', password: 'helloworld', confirmed_at: '2016-08-14')
 
-premium = User.create!(email: 'premium@example.com', password: 'helloworld')
+premium = User.create!(email: 'premium@example.com', password: 'helloworld', confirmed_at: '2016-08-14')
 premium.remove_role :free
 premium.add_role :premium
 
-admin = User.create!(email: 'admin@example.com', password: 'helloworld')
+admin = User.create!(email: 'admin@example.com', password: 'helloworld', confirmed_at: '2016-08-14')
 admin.remove_role :free
 admin.add_role :admin
 

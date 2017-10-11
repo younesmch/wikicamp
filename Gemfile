@@ -20,9 +20,6 @@ source 'https://rubygems.org'
    # Use sqlite3 as the development database for Active Record
    gem 'sqlite3'
    gem 'web-console', '~> 2.0'
-   gem 'pry-rails'
-   #gem 'better-errors'
-   #gem 'binding_of_caller'
  end
 
  # Use Puma as the app server
@@ -51,6 +48,8 @@ source 'https://rubygems.org'
 
  gem "rolify"
 
+ gem "stripe"
+
  group :development do
    gem 'listen', '~> 3.0.5'
    gem "better_errors"
@@ -58,14 +57,17 @@ source 'https://rubygems.org'
  end
 
  group :test do
+
    gem 'shoulda'
    gem 'faker'
    gem 'factory_girl_rails'
    gem 'simplecov'
    gem 'pundit-matchers', '~> 1.3.1'
+   gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
  end
 
  group :development, :test do
    gem 'rspec-rails', '~>3.0'
    gem 'rails-controller-testing'
+   gem 'pry-rails'
  end
