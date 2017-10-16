@@ -6,7 +6,12 @@ class UsersController < ApplicationController
     #check to see if user is premium.  If so downgrade to free
     if @user.has_role? :premium
       @user.remove_role :premium
-      flash[:notice] = "You have been downgraded."
+      #loop through existing wikis. Make private wikis public.
+      @user.wikis.each do |wiki|
+        wiki.private = false
+        wiki.save
+      end
+      flash[:notice] = "You have been downgraded. All of your wikis are now public."
     else
       flash[:notice] = "You are already a free user."
 
