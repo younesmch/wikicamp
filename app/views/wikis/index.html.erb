@@ -1,11 +1,11 @@
 <h1>Campsites </h1>
   <%= link_to "Create New", new_wiki_path, class: 'btn btn-success' %>
-  <% @wikis.each do |w| %>
-    <div class ='media'>
-      <div class = "media-body">
-        <h4 class="media-heading">
-          <%= link_to w.title, w %>
-        </h4>
+    <% @wikis.each do |w| %>
+      <div class ='media'>
+        <div class = "media-body">
+          <h4 class="media-heading">
+              <%= link_to w.title, w %>
+          </h4>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>

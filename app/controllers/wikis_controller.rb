@@ -2,8 +2,7 @@ class WikisController < ApplicationController
   include Pundit
 
   def index
-    @wikis = Wiki.all
-    authorize @wikis
+    @wikis = policy_scope(Wiki)
   end
 
   def create
