@@ -5,10 +5,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :wikis
+  has_many :collaborators
 
   after_create :assign_default_role
 
   def assign_default_role
-    self.add_role(:free) 
+    self.add_role(:free)
   end
 end

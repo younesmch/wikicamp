@@ -44,19 +44,26 @@ class WikiPolicy < ApplicationPolicy
 
     def resolve
       wikis = []
-      if user.has_role?(:admin) || user.has_role?(:premium)
+      if user.has_role?(:admin)
         wikis = scope.all
-      else
+      elsif user.has_role?(:premium)
         all_wikis = scope.all
         all_wikis.each do |wiki|
-          if wiki.user == user
+          if (wiki.private == false || wiki.user == user || wiki.collaborators.include?(Collaborator.find_by_user_id(user.id)))
             wikis << wiki
           end
         end
-        wikis
+      else #free user
+        all_wikis = scope.all
+        wikis = []
+        all_wikis.each do |wiki|
+          #loop through all the wikis. Display wiki if public if they are a collaborator on a private wiki. Don't show if they created it since it should be public anyway
+          if (wiki.private == false || wiki.collaborators.include?(Collaborator.find_by_user_id(user.id)))
+            wikis << wiki
+          end
+        end
+      end
+      wikis #return the wikis array that has been built up
       end
     end
-  end
-
-
 end

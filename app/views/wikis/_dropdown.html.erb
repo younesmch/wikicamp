@@ -1,0 +1,6 @@
+<%= form_for Collaborator.new do |f| %>
+  <%= f.label :add_collaborators, :style => "margin-top: 10px; font-size: 17px" %><br>
+  <%= f.select(:user_id, @allcollaborators.collect {|w| [w.email, w.id]}, :prompt => 'Select a collaborator', :style => "width: 20px") %><br>
+  <%= f.hidden_field :wiki_id, value: @wiki.id %><br>
+  <%= f.submit "Add", class: 'btn btn-success btn-sm'%>
+<% end %>
