@@ -1,3 +1,20 @@
 <h1>Edit your Campsite</h1>
 
-  <%= render partial:'form' %>  
+<%= render partial:'form' %>
+
+<%= render partial:'dropdown' %>
+
+<h2> Campsite Collaborators </h2>
+
+<% @wiki.collaborators.each do |c| %>
+  <ul>
+    <div class ='media'>
+      <div class = "media-body">
+        <h4 class="media-heading">
+            <%= c.user.email %>
+            <%= link_to "Remove", collaborator_path(c), data: { confirm: 'Are you sure?'}, :style => "margin-left: 40px", method: :delete %>
+        </h4>
+      </div>
+    </div>
+  </ul>
+<% end %>
